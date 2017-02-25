@@ -22,24 +22,15 @@
 	    var aBtn = document.getElementsByTagName('button');
 	    var oUl = document.getElementById('parent');
 	    var aLi = oUl.getElementsByTagName('li');
+	    var aFoo=[creatLi,creatLi,removeLi,removeLi];
+	    var flag=[true,false,true,false];
 
-	    aBtn[0].onclick=function () {
-	    	var flag=true;
-	    	creatLi(flag);
-	    };
-	    aBtn[1].onclick=function () {
-	    	var flag=false;
-	    	creatLi(flag);
-	    };
-	    aBtn[2].onclick=function () {
-	    	var flag=true;
-	    	removeLi(flag);
-	    };
-	    aBtn[3].onclick=function () {
-	    	var flag=false;
-	    	removeLi(flag);
-	    };
-
+        for (var i = 0; i < aBtn.length; i++) {
+        	aBtn[i].index=i;
+        	aBtn[i].onclick=function () {
+        		return aFoo[this.index](this.index);
+        	};
+        }
         //点击按钮创建li
 		function creatLi(flag) {
 			if (oTxt.value === "") {
