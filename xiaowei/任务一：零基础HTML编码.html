@@ -31,16 +31,46 @@
 	<li>排名1</li>
 	<li>排名1</li>
 </ol>
+
+ <xmp style="background-color: #eee;display: inline-block;color: red;font-size: 16px;">
+ 表格的一个特殊border样式
+ <table border='1'></table>
+ </xmp>
+<br>
 下面是一个表格
-<table style="border:1px solid red;">
-	<tr >
-		<th>ni</th>
-		<td>ni</td>
-		<td>ni</td>
-		<td>ni</td>
-		<td>ni</td>
-	</tr>
+<table border='1'>
+    <thead>
+        <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+        </tr>
+        <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+        </tr>
+        <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+        </tr>
+     </tbody>
+    <tfoot>
+        <tr>
+            <td>总计</td>
+            <td colspan="2">1000</td>
+        </tr>    	
+    </tfoot> 
 </table>
+
 请输入邮箱地址: <input type="email"> <br>
 请输入密码: <input type="password"> 
 请再次输入密码: <input type="password">
