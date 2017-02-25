@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding:0;}
+.parent{}
+.child{background-color: pink;}
+.parent{text-align: left;}
+.child{display: inline-block;margin-left: 5px;}
+.btn{width: 50px;}
+
+</style>
+<body>
+<input type="text" id="txt">
+<button class="btn">左侧入</button>
+<button class="btn">右侧入</button>
+&nbsp;&nbsp;&nbsp;
+<button class="btn">左侧出</button>
+<button class="btn">右侧出</button>
+<ul class="parent">
+
+</ul>
+
+
+<script>
+var oTxt = document.getElementById('txt');
+var aBtn = document.getElementsByTagName('button');
+var oUl = document.getElementsByTagName('ul')[0];
+function creatLi(){
+	oLi = document.createElement('li');
+	oLi.innerHTML=oTxt.value;
+	oLi.className = 'child';
+	aLi = oUl.getElementsByTagName('li');	
+}
+window.onload=function(){
+	aBtn[0].onclick = function(){
+		creatLi();
+		if(aLi.length>0)
+		{
+			oUl.insertBefore(oLi, aLi[0]);
+		}
+		else
+		{
+			oUl.appendChild(oLi);
+		}
+	}
+	aBtn[1].onclick = function(){
+		creatLi();
+			oUl.appendChild(oLi);
+	}
+	aBtn[2].onclick = function(){
+		creatLi();
+		if(aLi.length>0)
+		{
+			var oAlert = aLi[0].innerHTML;
+			aLi[0].parentNode.removeChild(aLi[0]);
+			alert("删除: " + oAlert);
+		}
+		else
+		{
+			alert('没有元素可以删除');
+		}
+	}
+	aBtn[3].onclick = function(){
+		creatLi();
+		if(aLi.length>0)
+		{
+			var oAlert = aLi[aLi.length-1].innerHTML;
+			aLi[aLi.length-1].parentNode.removeChild(aLi[aLi.length-1]);
+			alert("删除: " + oAlert);
+		}
+		else
+		{
+			alert('没有元素可以删除');
+		}
+	}
+
+}
+</script>
+</body>
+</html>
+
+
+
+
+
