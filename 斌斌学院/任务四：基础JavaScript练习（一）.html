@@ -21,21 +21,20 @@
 <button class="btn">左侧出</button>
 <button class="btn">右侧出</button>
 <ul class="parent">
-
 </ul>
 
-
 <script>
-var oTxt = document.getElementById('txt');
-var aBtn = document.getElementsByTagName('button');
-var oUl = document.getElementsByTagName('ul')[0];
-function creatLi(){
-	oLi = document.createElement('li');
-	oLi.innerHTML=oTxt.value;
-	oLi.className = 'child';
-	aLi = oUl.getElementsByTagName('li');	
-}
+
 window.onload=function(){
+	var oTxt = document.getElementById('txt');
+	var aBtn = document.getElementsByTagName('button');
+	var oUl = document.getElementsByTagName('ul')[0];
+	function creatLi(){
+		oLi = document.createElement('li');
+		oLi.innerHTML=oTxt.value;
+		oLi.className = 'child';
+		aLi = oUl.getElementsByTagName('li');	
+	}
 	aBtn[0].onclick = function(){
 		creatLi();
 		if(aLi.length>0)
@@ -77,6 +76,13 @@ window.onload=function(){
 			alert('没有元素可以删除');
 		}
 	}
+	oUl.onmouseover=function (){
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].onclick = function () {
+					oUl.removeChild(this);
+				};
+		    }
+		};
 
 }
 </script>
