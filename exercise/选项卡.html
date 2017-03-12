@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+<style>
+    .box{width: 200px;padding: 20px;overflow: hidden;background-color:#ccc;display: none;}
+    input{background-color: white;}
+    .active{background-color: pink;} 
+</style>
+</head>
+<body>
+<div id="nav">
+    <input type="button" class="active" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+    
+</div>
+
+<div class="content">
+    <div class="box" style="display: block;">
+        妙味课堂1
+    </div>
+    <div class="box">妙味课堂2</div>
+    <div class="box">妙味课堂3</div>
+</div>
+
+<script>
+window.onload=function(){
+    var aInput=document.getElementsByTagName('input')
+    var aBox=document.querySelectorAll('.box');
+    for (var i = 0; i < aInput.length; i++) {
+        aInput[i].index=i;//定义这个调用事件的index = i 目的是下面div的i能通过this.index来调用,轮播图圆点也是这个道理
+        aInput[i].onclick=function(){
+            for (var i = 0; i < aInput.length; i++) {
+                aInput[i].className='';
+                aBox[i].style.display='none';
+            }
+            this.className='active';
+            aBox[this.index].style.display='block';
+        }
+    }
+}
+
+
+// window.onload = function () {
+//     var btn = document.getElementsByTagName('input');
+//     var boxstyle = document.getElementsByClassName('box');
+//         for (var i = 0; i < btn.length; i++) {
+
+//         btn[i].index = i; //为了让后面的div也有对应的索引值
+            
+//         btn[i].onclick = function(){
+//             for (var i = 0; i < btn.length; i++) {
+//                 btn[i].className = " ";
+//                 boxstyle[i].style.display = "none"
+//             } //第一步把他们都设置成空...
+//             this.className = "active";
+//             //这里要用到this而不是btn[i] 不理解?  在循环中有一个函数,那么这个i不是依次变化的,而是等于循环条件数
+
+//             // 上面定义过了,这里就可以用this.index来索引
+//             boxstyle[this.index].style.display = "block";
+//         }
+//     }
+    
+// }
+
+</script>
+</body>
+</html>
