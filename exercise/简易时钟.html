@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易时钟开启和关闭</title>
+</head>
+<body>
+<input type="button" value="开启时钟" id="open">
+<input type="button" value="关闭时钟" id="shutdown">
+<p id="time"></p>
+
+<script>
+    // setInterval(事件,间隔时间) ; 一直重复 clearInterval
+    // setTimeout(事件,间隔时间) ; 延时,只执行一次 clearTimeout
+var oShowTime=document.getElementById('time');
+
+function show(){  //定义一个让定时器调用的函数.
+    var oDate = new Date();
+    var str = oDate.getHours() + "时" + oDate.getMinutes() + "分" + oDate.getSeconds() + "秒";
+    console.log(str);
+    oShowTime.innerHTML=str;
+
+}
+window.onload = function (){
+    var oOpen = document.getElementById('open');
+    var oShutdown = document.getElementById('shutdown');
+    var doshutdown = null;
+
+    oOpen.onclick = function () {
+        clearInterval(doshutdown);
+        doshutdown = setInterval(show,1000);  //调用这个函数只需要函数名即可.
+    }
+
+    // var doshutdown = setInterval(show,1000); 一边定义一边执行了,错误.赋值语句也是执行语句.
+    oShutdown.onclick = function (){
+        clearInterval(doshutdown);
+    } 
+}
+</script>   
+</body>
+</html>

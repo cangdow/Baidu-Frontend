@@ -2,67 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>简易日历</title>
-<style>
-*{margin:0;padding:0;}
-li{display: inline-block;width: 100px;height: 80px;background-color: #333;border:1px solid gray;text-align: center;padding-top: 20px;}
-ul{width:320px;float:left;margin-right: 20px;}
-.active{
-    width:100px;height: 80px;background-color: #eee;
-}
-.text{}
-</style>
+    <title>index</title>
+    <link rel="stylesheet" href="css/slide.css">
+    <style>
+        .ck-slide {
+            width:100%;
+            height:460px;
+        }
+        .ck-slide ul.ck-slide-wrapper {
+            height:460px;
+        }
+    </style>
 </head>
 <body>
-<div id="tab" class="calendar">
-<ul>
-    <li class="active"><h2>1</h2><p>JAN</p></li>
-    <li><h2>2</h2><p>FEB</p></li>
-    <li><h2>3</h2><p>MAR</p></li>
-    <li><h2>4</h2><p>APR</p></li>
-    <li><h2>5</h2><p>MAY</p></li>
-    <li><h2>6</h2><p>JUE</p></li>
-    <li><h2>7</h2><p>JUL</p></li>
-    <li><h2>8</h2><p>AUG</p></li>
-    <li><h2>9</h2><p>SEP</p></li>
-    <li><h2>10</h2><p>OCT</p></li>
-    <li><h2>11</h2><p>NOV</p></li>
-    <li><h2>12</h2><p>DEC</p></li>
-</ul>
-
-
-    <div class="text">
-        <h2>1月活动</h2>
-        <p>大家准备过年喽</p>
+    <div class="ck-slide">
+        <ul class="ck-slide-wrapper">
+            <li>
+                <a href="javascript:;"><img src="images/banner1.jpg" alt="" ></a>
+            </li>
+            <li style="display:none">
+                <a href="javascript:;"><img src="images/banner2.jpg" alt="" ></a>
+            </li>
+            <li style="display:none">
+                <a href="javascript:;"><img src="images/banner3.jpg" alt="" ></a>
+            </li>
+        </ul>
+        <!-- 上一张下一张 -->
+        <a href="javascript:;" class="ctrl-slide ck-prev">上一张</a>
+        <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
+        <!-- 小圆点 -->
+        <div class="ck-slidebox">
+            <div class="slideWrap">
+                <ul class="dot-wrap">
+                    <li class="current"><em>1</em></li>
+                    <li ><em>2</em></li>
+                    <li><em>3</em></li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-<script>
-window.onload = function(){
-    var aLi = document.getElementsByTagName("li");
-    var otxt = document.getElementById('tab').getElementsByTagName('div')[0];
-
-    // 利用数组来存放数据,用索引值来调用.索引值真是好啊.
-    var planlist = ["大家准备过年喽","春天花会开","植树好季节","你好","你好","你好","你好","你好","你好","你好","你好","你好"];
-
-    for (var i = 0; i < aLi.length; i++) {
-        aLi[i].index=i;
-        aLi[i].onmouseover=function(){
-            for (var i = 0; i < aLi.length; i++) {
-                aLi[i].className='';
-            }
-            this.className='active';
-            otxt.innerHTML='<h2>'+(this.index+1)+'月活动</h2>'+'<p>'+planlist[this.index]+'</p>'; //整体不需要引号.
-        }
-
-    }
-}
-</script>
+<script src="js/slide.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
