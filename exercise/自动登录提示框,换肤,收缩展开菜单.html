@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>自动登录提示框,换肤,收缩展开菜单</title>
+<link rel="stylesheet" href="css/css1.css">
+<style>
+*{margin:0;padding:0;}
+#submit{width: 100px;border: 1px solid #eee;background-color: #999;display: none;position: absolute;top:20px;}
+#menu{position: absolute;top: 0px;left: 250px;}
+#menu_ul{list-style: none;display: none;border: 1px solid gray;text-align: center;}
+#menu_ul li a {text-decoration: none;}
+#menu_ul li:hover{background-color: #eee;}
+
+</style>
+	
+</head>
+<body>
+<label for="" id="btn"><input type="checkbox">自动登录</label>
+<input type="button" value="黄皮肤" onclick="oLink.href='css/css1.css';">
+<input type="button" value="红皮肤" onclick="oLink.href='css/css2.css';">
+<div id="menu">
+	<p id="putin">输入法</p>	
+	<ul id="menu_ul">
+		<li><a href="">手写</a></li>
+		<li><a href="">拼音</a></li>
+		<li><a href="">关闭</a></li>
+	</ul>
+</div>
+
+<div id="submit" >
+	不要随便和陌生人说话...
+</div>
+
+
+<script>
+	var oBtn=document.getElementById('btn');
+	var oSub=document.getElementById('submit');
+	oBtn.onmouseover=function(){
+		oSub.style.display='block';
+	}
+	oBtn.onmouseout=function(){
+		setTimeout(oSub.style.display='none',200);		
+	}
+	oSub.onmouseover=function(){
+		oSub.style.display='block';
+	}
+	oSub.onmouseout=function(){
+		setTimeout(oSub.style.display='none',200);
+	}
+
+	var oBtn1=document.getElementById('huang');
+	var oBtn2=document.getElementById('hong');
+	var oLink=document.getElementsByTagName('link')[0];
+	// oBtn1.onclick=function(){
+	// 	oLink.href='css1.css';
+	// }
+	// oBtn2.onclick=function(){
+	// 	oLink.href='css2.css';
+	// }
+
+	var oPutin=document.getElementById('putin');
+	var oUl=document.getElementById('menu_ul');
+	// oPutin.onmouseover=function(){
+	// 	oUl.style.display='block';
+	// }
+	// oPutin.onmouseout=function(){
+	// 	setTimeout(oUl.style.display='none',200);		
+	// }
+	// oUl.onmouseover=function(){
+	// 	oUl.style.display='block';
+	// }
+	// oUl.onmouseout=function(){
+	// 	setTimeout(oUl.style.display='none',200);
+	// }
+	oPutin.onclick=function(){
+		if(oUl.style.display==='none'){
+			oUl.style.display='block';
+		}else{
+			oUl.style.display='none';
+		}
+	}
+</script>
+</body>
+</html>
