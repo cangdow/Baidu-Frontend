@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动1</title>
+<style>
+#demo{width: 100px;height: 100px;background:#999;margin-top: 10px;
+position: absolute;left: 0;}
+</style>
+</head>
+<body>
+<input type="button" value="启动" id="btn1">	
+<input type="button" value="停止" id="btn2">	
+<p>求教:如何在同一个按钮控制启动和停止?</p>
+<div id="demo"></div>
+<script>
+	var oBtn1=document.getElementById('btn1');
+	var oBtn2=document.getElementById('btn2');
+	var oDemo=document.getElementById('demo');
+	var timer=null;
+	oBtn1.onclick=function(){
+			clearInterval(timer);
+			function move(){
+				if(oDemo.offsetLeft>window.innerWidth){
+					oDemo.style.left=0;
+				}else{
+					oDemo.style.left=oDemo.offsetLeft+5+'px';
+				}
+				
+			}
+			timer=setInterval(move,30);
+	};
+	oBtn2.onclick=function(){
+		clearInterval(timer);
+	}
+
+</script>
+</body>
+</html>

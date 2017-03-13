@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>时钟</title>
+	<title>数码时钟</title>
 <style>
 
 img{
 	width: 50px;
 }
-#clock{position: absolute;left: 50%;top: 30%;transform:translate(-50%,-50%);}
+#clock{position: absolute;left: 50%;top: 40%;transform:translate(-50%,-50%);}
 span{display: inline-block;font-size:80px;color:gray;vertical-align: 15px;}
 /*图片和文字不能对齐的时候可以通过vertical-align来调整,针对inline或inline-block元素有效.*/
+p{font-size: 50px;color:gray;text-align: center;}
 </style>
 </head>
 <div id="clock">
@@ -24,11 +25,13 @@ span{display: inline-block;font-size:80px;color:gray;vertical-align: 15px;}
 <img src="images/Timing/0.png" alt="">
 <img src="images/Timing/0.png" alt="">
 <span>秒</span>
+<p id="setTime"></p>
 </div>
 <script>
 
 window.onload = function(){
 	var aImg=document.getElementsByTagName('img');
+	var oDate=new Date();
 	//由于时间遇到0X的时候会出现0不显示问题
 	function toDubble(num){
 		if(num<10){
@@ -45,9 +48,46 @@ window.onload = function(){
 			aImg[i].src="images/Timing/"+oTime.charAt(i)+".png";
 		}
 		
+		// 星期天系统返回值为0 , 月份系统返回值从0开始,所以要加1
+		var oTime1 = oDate.getFullYear() +"年"+ (oDate.getMonth()+1)+"月"+oDate.getDate()+"日 "+ toWeek(oDate.getDay());
+		var oSetTime=document.getElementById('setTime');
+		oSetTime.innerHTML=oTime1;
+		
 	}
 	setInterval(upDate,1000);
 	upDate();//第一次需要先加载一次更新时钟函数.
+
+	function toWeek(day) {
+		switch (day) {
+			case 0:
+				return "星期日";
+				break;
+			case 1:
+				return "星期一";
+				break;	
+			case 1:
+				return "星期一";
+				break;
+			case 2:
+				return "星期二";
+				break;
+			case 3:
+				return "星期三";
+				break;
+			case 4:
+				return "星期四";
+				break;
+			case 5:
+				return "星期五";
+				break;
+			case 6:
+				return "星期六";
+				break;				
+			default:
+				// statements_def
+				break;
+		}
+	}
 
 }
 

@@ -36,18 +36,25 @@
 <script>
 	var oBtn=document.getElementById('btn');
 	var oSub=document.getElementById('submit');
-	oBtn.onmouseover=function(){
+	// function show(){
+	// 	oSub.style.display='block';
+	// }
+
+	// function hiden(){
+	// 	setTimeout(oSub.style.display='none',200);		
+	// }
+	// oBtn.onmouseover=show;
+	// oBtn.onmouseout=hiden;
+	// oSub.onmouseover=show;
+	// oSub.onmouseout=hiden;
+	// 还可以更简洁:
+	oBtn.onmouseover = oSub.onmouseover=function(){
 		oSub.style.display='block';
 	}
-	oBtn.onmouseout=function(){
-		setTimeout(oSub.style.display='none',200);		
+	oBtn.onmouseout = oSub.onmouseout=function(){
+		setTimeout(oSub.style.display='none',200);	
 	}
-	oSub.onmouseover=function(){
-		oSub.style.display='block';
-	}
-	oSub.onmouseout=function(){
-		setTimeout(oSub.style.display='none',200);
-	}
+
 
 	var oBtn1=document.getElementById('huang');
 	var oBtn2=document.getElementById('hong');
