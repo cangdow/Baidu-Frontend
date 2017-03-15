@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新年快乐2.0</title>
+<style>
+*{margin:0;padding:0;}
+#demo{/*width: 1000px;*/height: 400px;position: relative;margin:auto;}
+#wrap{/*width: 1000px;*/height: 400px;position: relative;overflow: hidden;}
+#wrap ul{list-style: none;position: absolute;left: 0;top: 0;}
+#wrap ul li{float: left;width:250px;height: 400px;}
+</style>
+</head>
+<body>
+<input type="button" value="向左移动" id="btn1">	
+<input type="button" value="停止" id="btn2">	
+<input type="button" value="向右移动" id="btn3">	
+
+<div id="demo">
+<div id="wrap">
+	<ul>
+		<li><img src="images/light/deng1.png" alt=""></li>
+		<li><img src="images/light/deng2.png" alt=""></li>
+		<li><img src="images/light/deng3.png" alt=""></li>
+		<li><img src="images/light/deng4.png" alt=""></li>
+	</ul>
+</div>
+</div>
+<script>
+	var oBtn1=document.getElementById('btn1');
+	var oBtn2=document.getElementById('btn2');
+	var oBtn3=document.getElementById('btn3');
+	var oUl=document.getElementsByTagName('ul')[0];
+	var aLi=document.getElementsByTagName('li');
+	var iSpeed=-5;
+	var timer=null;
+	var a=null;
+	//设置得足够宽的话,整个屏幕都可以随便的移动了...
+	oUl.innerHTML = oUl.innerHTML+oUl.innerHTML+oUl.innerHTML;
+
+	oUl.style.width=aLi[0].offsetWidth*aLi.length+"px";
+
+	setInterval(function(){
+		oUl.style.left=oUl.offsetLeft+iSpeed+'px';
+		if(oUl.offsetLeft<-oUl.offsetWidth/3){
+			oUl.style.left='0px';
+		}else if (oUl.offsetLeft>0) {
+			oUl.style.left=-oUl.offsetWidth/3+'px';
+		}
+	},30)
+	oBtn1.onclick=function(){
+		iSpeed = -5;
+	};
+	oBtn2.onclick=function(){
+		iSpeed = 0;
+	};
+	oBtn3.onclick=function(){
+		iSpeed = 5;
+	};
+	oUl.onmouseover=function(){
+		a=iSpeed;
+		iSpeed=0;
+	}
+	oUl.onmouseout=function(){
+		iSpeed=a;
+	}
+	//优化一下 用speed来调整方向.半屏的话可以.
+</script>
+</body>
+</html>
