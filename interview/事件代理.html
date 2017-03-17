@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件代理</title>
+<style>
+
+</style>
+</head>
+<body>
+<ul>
+	<li>0</li>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+</ul>
+<p>事件代理能解决什么问题</p>
+<p>事件代理的基本原理(事件模型)</p>
+<p>事件代理与普通事件绑定的优劣</p>
+	<p>应用在频繁触发事件时,如 mousemove</p>
+	<p>当列表频繁创建时</p>
+<script>
+	//点击每个li得到li内的值.
+	var nodes = document.querySelectorAll('ul li');
+
+	//无法得到需要的值.
+	for (var i = 0; i < nodes.length; i++) {
+		nodes[i].addEventListener('click', function(){
+			alert('click'+i);//函数里面是得不到外面的i的,i等于nodes.length.
+		})
+	}
+	//常规解决办法
+	for (var i = 0; i < nodes.length; i++) {
+		!function(node,index){
+ 			node.addEventListener('click', function(){
+			alert('click'+index);
+		})
+		}(nodes[i],i);
+	}
+	//牛逼点的解决办法
+	//注:NodeList.prototype.forEach并非所有浏览器都支持.
+	[].slice.call(nodes).forEach(function(node,index){
+ 			node.addEventListener('click', function(){
+			alert('click'+index);
+		})
+ 	})
+ 	//ES6更简洁的办法,兼容不好可以用byball转一下啥..
+ 	for (let i = 0; i < nodes.length; i++) {
+ 		nodes[i].addEventListener('click', function(){
+			alert('click'+i);
+		})
+ 	}
+ 	//当列表是更多 无数个的时候.
+ 	//可以用 事件代理进行优化.
+</script>
+</body>
+</html>

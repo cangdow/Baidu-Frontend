@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>优酷弹窗-透明度</title>
+<style>
+div{width: 200px;height: 200px;}
+.box{margin:100px auto;position: relative;}
+.content{background-color: blue; position: absolute;
+left: -6px;top: -6px;}
+.mark{background-color: gray; position: absolute;
+right: -6px;bottom: -6px;}
+
+.content{z-index: 1;}
+.mark{
+	opacity: 0.5;
+	/* 兼容IE */
+	filter:alpha(opacity=50);	
+}
+	/* 单元格间隙合并 */
+	table{border-collapse: collapse;}
+	/* 重置单元格默认填充 */
+	th,td{padding: 0;}
+</style>
+</head>
+<body>
+<div class="box">
+	<div class="content">内容层</div>
+	<div class="mark">遮罩层</div>
+</div>
+<table border="1px">
+	<thead>
+		<tr>
+			<th colspan="2">一 二</th>
+			<th>三</th>
+			<th>四</th>
+			<th>五</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2">语文</td>
+			<td>数学</td>
+			<td>英语</td>
+			<td>生物</td>
+			<td>化学</td>
+		</tr>
+		<tr>
+			<td>数学</td>
+			<td>英语</td>
+			<td>生物</td>
+			<td>化学</td>
+		</tr>
+	</tbody>
+	<tfoot></tfoot>
+</table>		
+</body>
+</html>

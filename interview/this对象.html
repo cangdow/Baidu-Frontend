@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this对象</title>
+</head>
+<body>
+<p>1,考察形参实参的理解</p>
+<p>2,调用方式对this指向的影响</p>
+<p>考察了call和bind的理解.</p>
+<script>
+	var a = {
+		a:'haha',
+		getA:function(){
+			console.log(this.a)
+		}
+	}
+	var b = {
+		a:'hello'
+	}
+	var getA = a.getA;
+	var getA2 = getA.bind(a);
+
+	function run(fn){
+		fn()
+	}
+	//分别输出:
+	a.getA();// haha
+	getA();// {a:'haha'}
+	run(a.getA); // {a:'haha'}
+	getA2.call(b); // 'haha'
+</script>	
+</body>
+</html>

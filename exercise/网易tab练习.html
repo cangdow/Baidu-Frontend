@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网易网页部分</title>
+	<!-- <base href="http://baidu.com" target="_blank"> -->
+<style>
+*{margin:0;border:0;text-decoration: none;}
+.tab{width: 298px;height: 471px;border:1px solid #e5e5e5;position: relative;top:20px;left: 20px;}
+.tab_nav{width: 298px;height: 38px;position: absolute;}
+.tab_nav h2{width: 149px;height: 38px;position: absolute;top: 0;left: 0;color:#ff3333;font-size: 16px;}
+.tab_nav h2 i{width: 150px;height: 2px;display: inline-block;position: absolute;margin:-1px -1px 0 -1px;
+	background-color: #ff3333;z-index: 8;}
+.tab_nav h2 span{position: absolute;top: 11px;left: 42px;}
+.tab_nav a{width: 148px;height: 38px;background-color: #f8f8f8;display: inline-block;position: absolute;top: 0;right: 0;
+border:1px solid #e5e5e5;border-top: none;border-right: none;
+color:#888888;font-size: 12px;}
+.tab_nav a span{position: absolute;top: 13px;left: 69px;}
+
+.tab_main{width: 268px;height:300px;position: absolute; top:38px;left: 15px;}
+.tab_main_email,.tab_main_kaola,.tab_main_game{width: 268px;height: 73px;border-bottom: 1px solid #e5e5e5;}
+.tab_main_email a,.tab_main_kaola a,.tab_main_game a{background: url(images/sprite_img.svg) no-repeat;display: inline-block;width: 41px;height: 41px;position: relative;top: 18px;}
+.tab_main_email a{background-position: -161px;}
+.tab_main_kaola a{background-position: -210px;}
+.tab_main_game a{background-position: -258px;}
+</style>
+</head>
+<body>
+<div class="tab">
+	<div class="tab_nav">
+		<h2>
+			<i></i>
+			<span>我的产品</span>
+		</h2>
+		<a href=""><span>全部产品</span></a>
+	</div>
+	<div class="tab_main">
+		<div class="tab_main_email">
+			<a href=""></a>
+		</div>
+		<div class="tab_main_kaola">
+			<a href=""></a>
+		</div>
+		<div class="tab_main_game">
+			<a href=""></a>
+		</div>
+		<div class="tab_main_recommend"></div>
+		<div class="tab_main_music"></div>
+	</div>
+</div>	
+</body>
+</html>

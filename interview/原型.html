@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型</title>
+</head>
+<body>
+
+<script>
+function clone(obj){
+	// return obj;
+	return Object.create(obj);
+}
+var a = {name:'a'};
+var b = clone(a);
+
+console.log(b.name) // a
+a.name = 'a1';
+console.log(b.name) // a1
+
+b.name = 'b';
+console.log(a.name) // a1
+
+a.name = 'a2';
+console.log(b.name) // a2  后一个return 则是 b .
+
+//第二种方法.
+function clone(obj){
+	var ret = {};
+	//并不规范,避免使用
+	ret.__proto__ = obj;
+	return ret;
+}
+//第三种方法.
+function clone(obj){
+	function Noop(){
+		Noop.prototype = obj;
+		return new Noop;
+	}
+}
+</script>	
+</body>
+</html>

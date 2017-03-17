@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03.兼容性汇总一</title>
+<style>
+.box{width: 200px;height: 200px;border:10px solid red;}
+.content{width: 250px;height: 200px;background-color: blue;}
+
+.box2{background-color: green;}
+.item{background-color: red;height: 50px;margin:50px;}
+/*.box2{border:1px solid #000;}*/
+.box2{overflow: hidden;zoom:1;}
+
+.item2{width: 100px;height: 100px;background-color: red;
+	margin-left: 50px;float: left;*display: inline;}
+
+.list{list-style: none;margin: 0;padding:0;width: 200px;}
+.list li{height: 30px;line-height: 30px; border:1px solid red;}
+.list li a{float: left;}
+.list li span{float: right;}
+</style>
+</head>
+<body>
+目的一,IE6下子元素超出父级宽高,会把父级的宽高撑开. <br>
+解决方案: 1,不建议子元素宽高超过父级.
+<div class="box">
+	<div class="content"></div>
+</div>
+<hr>
+目的二,P包含块元素嵌套规则. <br>
+解决方案:不要在p标签下添加块元素. 还有 h标签 td标签	
+<p>
+	<div>div</div>
+</p>
+<hr>
+目的三,margin的兼容性. <br>
+问题一:margin-top 传递 <br>
+	解决一:给box加border <br>
+	解决二:触发BFC haslayout <br>
+问题二:上下margin叠加 <br>
+	解决一:尽量使用同一方向的margin,这样就不会叠加了.
+<div class="box2">
+	<div class="item"></div>
+	<div class="item"></div>
+</div>
+<hr>
+目的四:当元素浮动后,在设置margin,IE6,7就会产生双倍边距. <br>
+	解决:设置 *display:inline;即可.
+<hr>
+<div class="item2"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+目的五:li里元素都浮动,li在IE6,7下方会产生4px间隙问题. <br>
+chrome下li之间不会有间隙. <br>
+解决: *vertical-align:top;即可.
+<ul class="list">
+	<li>
+		<a href="">左边</a>
+		<span>右边</span>
+	</li>
+	<li>
+		<a href="">左边</a>
+		<span>右边</span>
+	</li>
+	<li>
+		<a href="">左边</a>
+		<span>右边</span>
+	</li>
+	<li>
+		<a href="">左边</a>
+		<span>右边</span>
+	</li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

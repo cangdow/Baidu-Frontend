@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步</title>
+</head>
+<body>
+现在有三个[异步接口],分别是 <br>
+1,getTodayUser: 获取当天用户id,callback返回userId <br>
+2,getTodayMovie: 获取当天电影id,callback返回movieId <br>
+3,bookMovieFor 为用户预订电影,参数是userId 和 movieId <br>
+现在要实现,一个接口bookTodayMovieForTodayUser,为当天用户预订当天电影
+<script>
+ getTodayUser(function(userId){
+
+ })
+
+ getTodayMovie(function(movieId){
+ 	
+ })
+
+bookMovieForUser(userId,movieId,function(isDone){
+
+})
+
+//标准解法
+function bookTodayMovieForTodayUser(callback){
+	var params = []; //标记完成请求
+
+	function checkAndBook(){
+		var uid = params[0];
+		var mid = params[1];
+		if(typeof uid !== 'unddefined' && typeof mid !== 'undefined'){
+			bookMovieForUser(uid,mid,callback);
+		}
+	}
+}
+
+getTodayUser(function(userId){
+	params[0] = userId;
+	checkAndBook(); //检查emmet
+})
+getTodayUser(function(movieId){
+	params[1] = movieId;
+	checkAndBook(); //检查
+})
+</script>	
+</body>
+</html>
+
+
+
+
+

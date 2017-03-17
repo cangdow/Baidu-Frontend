@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02.浮动的兼容</title>
+<style>
+.box{width: 400px;border:1px solid black;
+overflow: hidden;}
+.left{float: left;background-color: red;}
+.right{float: right;background-color: blue;}
+/* 兼容IE 给需要自适应的元素加浮动即可 */
+h2{float: left}
+/*-------------------*/
+.box2{width: 500px;}
+.left2{width: 200px;height: 200px;background-color: red;
+		float: left;}
+.right2{width: 200px;height: 200px;background-color: blue;
+		margin-left: 200px;}
+/**/
+</style>
+</head>
+<body>
+目的一:元素浮动之后,能设置宽高的就给元素加宽高,如果需要宽高是内容撑开的,就给它里边的元素加上浮动.
+/* 兼容IE 给需要自适应的元素加浮动即可 */
+h2{float: left} <br>
+<div class="box">
+	<div class="left">
+		<h2>左边</h2>
+	</div>
+	<div class="right">
+		<!-- <a href="">右边</a> -->
+		<h2>右边</h2>
+	</div>
+</div>
+
+目的二:第一块元素浮动,第二块元素加margin值等于第一块元素,在IE6下会有间隙问题.
+解决办法: 1,不这么写, 2.给right也加个浮动 把margin-left删掉.3,也就是说不要第一个元素浮动,第二个元素用margin来定位.
+<div class="box2">
+	<div class="left2">
+		<h2>左边</h2>
+	</div>
+	<div class="right2">
+		<h2>右边</h2>
+	</div>
+</div>
+
+目的三: 清除浮动最完美的兼容方法.
+<pre><code>
+.clearfix{*zoom:1;  /*IE6的兼容*/} 
+.clearfix:after{ 
+	/*content:"after伪类生成的文字";*/ 
+	content:"";
+	display: block;
+	clear: both;
+}
+</code></pre>
+</body>
+</html>

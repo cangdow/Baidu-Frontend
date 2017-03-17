@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>清除浮动解析</title>
+<style>
+.box{border:1px solid red;}
+.item{width: 100px;height: 100px;background-color: #eee;margin:2px;}
+/* 1,设置子元素浮动,会从父元素中半脱离,
+   2,可以给父元素设置宽高,就不会脱离了.兼容性不好
+   3,给父元素也添加浮动,margin左右失效.父元素包裹子元素.
+   4,给父元素设置display:inline-block,一样会让margin左右失效.
+   5,加空标签,clear:box;放置空标签,IE6下有2px偏差,基本好用了.
+   6,<br clear="all"> 也是要一直加这个标签麻烦.
+   7,after伪类 主流方法.
+   8,overflow:hidden 需要配合宽度 或者 zoom 兼容IE6 IE7 */
+/*.box{float: left;}*/
+.item{float: left;}
+/*.clearfix{clear: both;}*/
+/*.box{overflow: hidden;}*/
+.clearfix{*zoom:1;  /*IE6的兼容*/}
+.clearfix:after{
+	/*content:"after伪类生成的文字";*/
+	content:"";
+	display: block;
+	clear: both;
+}
+</style>
+</head>
+<body>
+<div class="box clearfix">
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+<!-- 	<div class="clearfix"></div>
+	<br clear="all"> -->
+</div>
+</body>
+</html>
